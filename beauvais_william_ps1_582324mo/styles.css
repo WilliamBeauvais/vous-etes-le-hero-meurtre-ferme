@@ -1,0 +1,51 @@
+html {
+    background-color: #ADC178;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jeu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    min-height: 100px;
+    background-color: #DDE5B6;
+    padding: 20px;
+    color: #6C584C;
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 70px;
+    margin: 0;
+}
+
+.titre {
+    font-family: 'arial', sans-serif;
+}
+
+.texte {
+    font-family: 'arial', sans-serif;
+}
+
+.boutton {
+    font-family: 'arial', sans-serif;
+    color: #6C584C;
+    background-color: #F0EAD2;
+    border: none;
+}
+
+.zoneboutton {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.image {
+    padding-bottom: 20px;
+    width: 500px;
+    min-height: 100px;
+}
