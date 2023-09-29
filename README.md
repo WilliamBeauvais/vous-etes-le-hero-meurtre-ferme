@@ -10,4 +10,4 @@
 
 ## Diagramme
 
-![diagramme](/assets/schema.png)
+![diagramme](beauvais_william_ps1_582324mo/assets/schema.png)
