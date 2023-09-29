@@ -128,9 +128,15 @@ function goToChapter(chapterName) {
     let chapterTitre = chapters[chapterName]["titre"];
     let chapterDescription = chapters[chapterName]["description"];
     let chapterOptions = chapters[chapterName]["options"];
-    console.log(`${chapterTitre}`);
-    console.log(`${chapterDescription}`);
-    console.log(`${chapterOptions}`);
+    
+    if (chapterName!=undefined){
+        console.log(`${chapterTitre}`);
+        console.log(`${chapterDescription}`);
+        console.log(`${chapterOptions}`);
+    }
+    else{
+        console.log(`Mauvaise clé de chapitre :(`);
+    }
 }
 
 function reset(){
