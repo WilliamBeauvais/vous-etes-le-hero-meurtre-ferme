@@ -8,4 +8,4 @@
 
 **Palette de couleurs :** [Coolors](https://coolors.co/adc178-dde5b6-f0ead2-a98467-6c584c)
 
-![diagramme](https://vous-etes-le-hero-meurtre-ferme/assets/schema.png)
+![diagramme](/assets/schema.png)
