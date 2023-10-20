@@ -77,9 +77,20 @@ const chapters = {
     }
 }
 
-let twist = false;
-
 function goToChapter(chapterName) {
+    
+   /* let chapTitre = chapters.titre;
+    let chapDescription = chapters[chapterName]["description"];
+    let chapImage = chapters[chapterName]["image"];
+
+    let HTMLtitre = document.querySelector(".titre");
+    let HTMLdescription = document.querySelector(".description");
+    let HTMLimage = document.querySelector(".image");
+
+    HTMLsubtitle.innerHTML = chapterSubtitle;
+    HTMLtext.innerHTML = chapterText;
+    HTMLimage.src = chapterImg; */
+
     if(typeof chapterName === 'string' && chapterName in chapters){
         const chapter = chapters[chapterName];
 
@@ -93,11 +104,11 @@ function goToChapter(chapterName) {
                 const boutons = document.querySelector('.zoneboutton');
                     while (boutons.firstChild) {
                         boutons.removeChild(boutons.firstChild);
-                        for (let i = 0; i < chapitre.boutons.length; i++) {
+                        for (let i = 0; i < chapter.boutons.length; i++) {
                             const nouveauBtn = document.createElement('button');
-                            nouveauBtn.textContent = chapitre.boutons[i].titre;
+                            nouveauBtn.textContent = chapter.boutons[i].titre;
                             nouveauBtn.addEventListener('click', () => {
-                                goToChapter(chapitre.boutons[i].destination)
+                                goToChapter(chapter.boutons[i].destination)
 
                             });
                             boutons.appendChild(nouveauBtn);
@@ -113,5 +124,10 @@ function goToChapter(chapterName) {
     
 }
 
+let twist = false;
+
+if(chapterName = ["armure"]){
+    twist = true;
+}
 
 goToChapter("debut");
