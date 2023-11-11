@@ -77,22 +77,22 @@ const chapters = {
     }
 }
 
-function goToChapter(chapterName) {
+function goToChapter(chapters) {
     
-   /* let chapTitre = chapters.titre;
-    let chapDescription = chapters[chapterName]["description"];
-    let chapImage = chapters[chapterName]["image"];
+    let chapTitre = chapters[obj]["titre"];
+    let chapDescription = chapters[obj]["description"];
+    let chapImage = chapters[obj]["image"];
 
     let HTMLtitre = document.querySelector(".titre");
     let HTMLdescription = document.querySelector(".description");
     let HTMLimage = document.querySelector(".image");
 
-    HTMLsubtitle.innerHTML = chapterSubtitle;
-    HTMLtext.innerHTML = chapterText;
-    HTMLimage.src = chapterImg; */
+    HTMLtitre.innerHTML = chapTitre;
+    HTMLdescription.innerHTML = chapDescription;
+    HTMLimage.src = chapImage;
 
-    if(typeof chapterName === 'string' && chapterName in chapters){
-        const chapter = chapters[chapterName];
+    if(typeof obj === 'string' && obj in chapters){
+        const chapter = chapters[obj];
 
         console.log(chapter.titre);
         console.log(chapter.description);
