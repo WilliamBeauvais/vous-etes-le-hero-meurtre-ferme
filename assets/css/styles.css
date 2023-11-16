@@ -36,16 +36,28 @@ html {
     color: #6C584C;
     background-color: #F0EAD2;
     border: none;
+    padding: 10px;
 }
 
 .zoneboutton {
     display: flex;
     justify-content: space-between;
     width: 500px;
+    padding-bottom: 20px;
 }
 
 .image {
     padding-bottom: 20px;
     width: 500px;
     min-height: 100px;
+}
+
+.video {
+    padding-bottom: 20px;
+    width: 500px;
+    min-height: 100px;
+}
+
+.rien {
+    display: none;
 }

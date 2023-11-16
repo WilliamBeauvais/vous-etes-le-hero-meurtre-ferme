@@ -1,8 +1,9 @@
 const chapters = {
     debut: {
         titre: "Le début",
-        description: "Tu travails à la ferme et tu entends un garde qui cri. Tu cours pour allez voir ce qui se passe. Quand tu arrives tu vois un garde sur le sol et tui te mets à chercher des indices. Tu trouves un médaillon d'un groupe de meurtrier connu dans la région et décides d'aller leur rendre visite. Tu dois décider quel chemin prendre.",
+        description: "Tu travails à la ferme et tu entends un garde qui cri. Tu cours pour allez voir ce qui se passe. Quand tu arrives tu vois un garde sur le sol et tu te mets à chercher des indices. Tu trouves un médaillon d'un groupe de meurtrier connu dans la région et décides d'aller leur rendre visite. Tu dois décider quel chemin prendre.",
         image: "assets/images/hero1.jpg",
+        video: "assets/video/foin.mp4",
         boutons: [
             { text: "Aller à gauche", destination: 'gauche' },
             { text: "Aller à droite", destination: 'droite' }
@@ -71,63 +72,87 @@ const chapters = {
         titre: "La paix",
         description: "Il se casse la main sur ton armure et commence à pleurer tel un nouveau née. Il te donne le meurtrier en échange de la paix.",
         image: "assets/images/paix.jpg",
+        video: "assets/video/fleur.mp4",
         boutons: [
             { text: "Retourner au début", destination: 'debut' }
         ]
     }
 }
 
-function goToChapter(chapters) {
-    
-    let chapTitre = chapters[obj]["titre"];
-    let chapDescription = chapters[obj]["description"];
-    let chapImage = chapters[obj]["image"];
+function goToChapter(chapterName) {
+
+    localStorage.setItem("chapitre", chapterName);
+
+    let chapTitre = chapters[chapterName]["titre"];
+    let chapDescription = chapters[chapterName]["description"];
+    let chapImage = chapters[chapterName]["image"];
+    let chapVideo = chapters[chapterName]["video"];
 
     let HTMLtitre = document.querySelector(".titre");
     let HTMLdescription = document.querySelector(".description");
     let HTMLimage = document.querySelector(".image");
+    let HTMLvideo = document.querySelector(".video");
+    let HTMLaudio = document.querySelector(".audio");
 
     HTMLtitre.innerHTML = chapTitre;
     HTMLdescription.innerHTML = chapDescription;
     HTMLimage.src = chapImage;
+    HTMLvideo.src = chapVideo;
 
-    if(typeof obj === 'string' && obj in chapters){
-        const chapter = chapters[obj];
+    if (chapVideo != undefined) {
+        HTMLvideo.classList.remove("rien");
+        HTMLimage.classList.add("rien");
+    } else {
+        HTMLvideo.classList.add("rien");
+        HTMLimage.classList.remove("rien");
+    }
+
+    HTMLaudio.play();
+
+    if (typeof chapterName === 'string' && chapterName in chapters) {
+        const chapter = chapters[chapterName];
 
         console.log(chapter.titre);
         console.log(chapter.description);
 
-        if(chapter.boutons.length){
+        if (chapter.boutons.length) {
             console.log('Options : ');
-            for(let i = 0; i < chapter.boutons.length; i++){
+            for (let i = 0; i < chapter.boutons.length; i++) {
                 const btn = chapter.boutons[i];
                 const boutons = document.querySelector('.zoneboutton');
-                    while (boutons.firstChild) {
-                        boutons.removeChild(boutons.firstChild);
-                        for (let i = 0; i < chapter.boutons.length; i++) {
-                            const nouveauBtn = document.createElement('button');
-                            nouveauBtn.textContent = chapter.boutons[i].titre;
-                            nouveauBtn.addEventListener('click', () => {
-                                goToChapter(chapter.boutons[i].destination)
+                while (boutons.firstChild) {
+                    boutons.removeChild(boutons.firstChild);
+                    for (let i = 0; i < chapter.boutons.length; i++) {
+                        const nouveauBtn = document.createElement('button');
+                        nouveauBtn.textContent = chapter.boutons[i].titre;
+                        nouveauBtn.addEventListener('click', () => {
+                            goToChapter(chapter.boutons[i].destination)
 
-                            });
-                            boutons.appendChild(nouveauBtn);
-                        };
-                    }
+                        });
+                        boutons.appendChild(nouveauBtn);
+                    };
+                }
                 console.log(`${btn.text}\n Tapez goToChapter('${btn.destination}')`);
             }
+            let btnReset = document.querySelector(".reset");
+            btnReset.addEventListener('click', () => {
+                localStorage.clear();
+            });
+
         } else {
             return 'Fin';
         }
 
     }
-    
+
 }
 
-let twist = false;
-
-if(chapterName = ["armure"]){
-    twist = true;
+if (chapterName = "armure") {
+    localStorage.setItem("twist", true);
 }
+
+localStorage.getItem("chapitre")
+
+localStorage.getItem("twist")
 
 goToChapter("debut");
