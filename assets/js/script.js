@@ -107,7 +107,14 @@ function goToChapter(chapterName) {
         HTMLimage.classList.remove("rien");
     }
 
-    HTMLaudio.play();
+    let silence = document.querySelector(".silence");
+
+    if (silence = false) {
+        HTMLaudio.play();
+        localStorage.setItem("silence", false);
+    } else {
+        localStorage.setItem("silence", true);
+    }
 
     if (typeof chapterName === 'string' && chapterName in chapters) {
         const chapter = chapters[chapterName];
@@ -154,5 +161,7 @@ if (chapterName = "armure") {
 localStorage.getItem("chapitre")
 
 localStorage.getItem("twist")
+
+localStorage.getItem("silence")
 
 goToChapter("debut");
